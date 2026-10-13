@@ -39,3 +39,7 @@ def test_delete_task(client):
     client.post("/tasks", json={"title": "Learn Docker"})
     client.delete("/tasks/1")
     assert client.get("/tasks").get_json() == []
+def test_version(client):
+    response = client.get("/version")
+    assert response.status_code == 200
+    assert response.get_json()["version"] == "1.0.0"
