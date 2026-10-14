@@ -1,4 +1,6 @@
 import os
+os.environ["DATA_FILE"] = "test_tasks.json"
+import os
 import pytest
 from app import app, DATA_FILE
 

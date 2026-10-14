@@ -3,7 +3,7 @@ import os
 from flask import Flask, jsonify, request
 
 app = Flask(__name__)
-DATA_FILE = "tasks.json"
+DATA_FILE = os.environ.get("DATA_FILE", "tasks.json")
 
 def load_tasks():
     if not os.path.exists(DATA_FILE):
