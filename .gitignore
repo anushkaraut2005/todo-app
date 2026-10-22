@@ -1,0 +1,4 @@
+tasks.json
+test_tasks.json
+__pycache__/
+.pytest_cache/

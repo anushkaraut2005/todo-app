@@ -3,7 +3,7 @@ import os
 from flask import Flask, jsonify, request
 
 app = Flask(__name__)
-DATA_FILE = "tasks.json"
+DATA_FILE = os.environ.get("DATA_FILE", "tasks.json")
 
 def load_tasks():
     if not os.path.exists(DATA_FILE):
@@ -50,6 +50,9 @@ def delete_task(task_id):
     tasks = [t for t in load_tasks() if t["id"] != task_id]
     save_tasks(tasks)
     return jsonify(message="deleted")
+@app.route("/version")
+def version():
+    return jsonify(version="1.0.0")
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000)
