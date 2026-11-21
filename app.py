@@ -1,8 +1,9 @@
 import json
 import os
 from flask import Flask, jsonify, request
-
+from prometheus_flask_exporter import PrometheusMetrics
 app = Flask(__name__)
+metrics = PrometheusMetrics(app)
 DATA_FILE = os.environ.get("DATA_FILE", "tasks.json")
 
 def load_tasks():
